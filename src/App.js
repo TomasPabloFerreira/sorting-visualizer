@@ -17,6 +17,7 @@ function App() {
 				<Navbar
 					handleToggleThemeMode={toggleThemeMode}
 					handleGenerateData={setGeneratedData}
+					initialDataSize={initialDataSize}
 				/>
 
 				<Visualizer data={data}/>

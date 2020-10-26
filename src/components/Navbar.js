@@ -1,6 +1,11 @@
-import { AppBar, Toolbar, Button, FormControlLabel, Switch } from '@material-ui/core'
+import { AppBar,Toolbar, FormControlLabel, Switch } from '@material-ui/core'
+import DataSizeSelector from './DataSizeSelector'
 
-const Navbar = ({ handleToggleThemeMode, handleGenerateData }) => {
+const Navbar = ({
+	handleToggleThemeMode,
+	handleGenerateData,
+	initialDataSize
+}) => {
 	return (
 		<AppBar position="static">
 			<Toolbar>
@@ -9,9 +14,10 @@ const Navbar = ({ handleToggleThemeMode, handleGenerateData }) => {
 					control={<Switch onClick={handleToggleThemeMode} />}
 				/>
 
-				<Button variant="contained" color="secondary" onClick={() => {handleGenerateData(200)}}>
-					GENERATE
-				</Button>
+				<DataSizeSelector
+					handleGenerateData={handleGenerateData}
+					initialDataSize={initialDataSize}
+				/>
 
 			</Toolbar>
 		</AppBar>
