@@ -6,7 +6,8 @@ const useStyles = makeStyles({
 		flex: 1,
 		margin: '0 5px',
 		borderRadius: '100px 100px 0 0',
-		height: ({ value }) => `${value}%`
+		height: ({ value }) => `${value}%`,
+		minWidth: 10
 	}
 })
 

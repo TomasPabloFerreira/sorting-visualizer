@@ -12,7 +12,8 @@ const useStyles = makeStyles({
 		flex: 1,
 		display: 'flex',
 		alignItems: 'flex-end',
-		padding: '15px 10px 0 10px'
+		padding: '15px 10px 0 10px',
+		overflowX: 'auto'
 	}
 })
 

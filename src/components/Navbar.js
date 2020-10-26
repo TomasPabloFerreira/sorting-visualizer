@@ -9,7 +9,7 @@ const Navbar = ({ handleToggleThemeMode, handleGenerateData }) => {
 					control={<Switch onClick={handleToggleThemeMode} />}
 				/>
 
-				<Button variant="contained" color="secondary" onClick={() => {handleGenerateData(50)}}>
+				<Button variant="contained" color="secondary" onClick={() => {handleGenerateData(200)}}>
 					GENERATE
 				</Button>
 
