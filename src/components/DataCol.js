@@ -6,16 +6,16 @@ const useStyles = makeStyles({
 		flex: 1,
 		margin: '0 5px',
 		borderRadius: '100px 100px 0 0',
-		height: ({ value }) => `${value}%`,
 		minWidth: 10
 	}
 })
 
 const DataCol = ({ value }) => {
-	const styles = useStyles({ value })
+	const styles = useStyles()
+	const height = { height: `${value}%` }
 
 	return (
-		<div className={styles.root} />
+		<div className={styles.root} style={height} />
 	)
 }
 
