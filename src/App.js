@@ -1,5 +1,5 @@
 import { Navbar, Visualizer } from './components'
-import { Box, MuiThemeProvider } from '@material-ui/core'
+import { Box, MuiThemeProvider, createMuiTheme } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useThemeMode } from './hooks'
 
@@ -28,12 +28,14 @@ const exampleData = [
 
 function App() {
 	const [theme, toggleThemeMode] = useThemeMode()
+	const themeConfig = createMuiTheme(theme)
 
 	return (
-		<MuiThemeProvider theme={theme}>
+		<MuiThemeProvider theme={themeConfig}>
 			<CssBaseline/>
 			<Box display="flex" flexDirection="column" height="100%">
-				<Navbar />
+				<Navbar toggleThemeMode={toggleThemeMode} />
+
 				<Visualizer data={exampleData}/>
 			</Box>
 		</MuiThemeProvider>
