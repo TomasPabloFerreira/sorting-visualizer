@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import {createMuiTheme} from '@material-ui/core'
 
 const themeObject ={
 	palette: {

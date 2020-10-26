@@ -1,15 +1,15 @@
 import { AppBar, Toolbar, Button, FormControlLabel, Switch } from '@material-ui/core'
 
-const Navbar = ({ toggleThemeMode }) => {
+const Navbar = ({ handleToggleThemeMode, handleGenerateData }) => {
 	return (
 		<AppBar position="static">
 			<Toolbar>
 
 				<FormControlLabel
-					control={<Switch onClick={toggleThemeMode} />}
+					control={<Switch onClick={handleToggleThemeMode} />}
 				/>
 
-				<Button variant="contained" color="secondary">
+				<Button variant="contained" color="secondary" onClick={() => {handleGenerateData(50)}}>
 					GENERATE
 				</Button>
 
