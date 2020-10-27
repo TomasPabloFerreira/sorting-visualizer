@@ -6,7 +6,8 @@ const useStyles = makeStyles({
 	container: {
 		display: 'flex',
 		flex: 1,
-		padding: '50px 0'
+		padding: '50px 0',
+		minWidth: '75%'
 	},
 	paper: {
 		flex: 1,
