@@ -4,11 +4,14 @@ import { useAlgorithms } from '../hooks'
 
 const useStyles = makeStyles({
 	container: {
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		flexWrap: 'wrap'
 	},
 	dataSizeSelector: {
 		display: 'flex',
-		alignItems: 'center'
+		alignItems: 'center',
+		justifyContent: 'center',
+		flexWrap: 'wrap'
 	},
 	algorithmSelector: {
 		margin: 'auto'

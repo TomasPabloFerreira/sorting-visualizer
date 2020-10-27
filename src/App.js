@@ -1,5 +1,5 @@
 import { Navbar, Visualizer } from './components'
-import { Box, MuiThemeProvider, createMuiTheme } from '@material-ui/core'
+import { Box, MuiThemeProvider, createMuiTheme, Button } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useThemeMode, useData } from './hooks'
 
@@ -19,6 +19,7 @@ function App() {
 					handleGenerateData={setGeneratedData}
 					initialDataSize={initialDataSize}
 				/>
+				<Button variant="contained" style={{ height: 40, fontSize: 20 }} color="primary">SORT</Button>
 
 				<Visualizer data={data}/>
 			</Box>
