@@ -2,7 +2,7 @@ import { AppBar,Toolbar, FormControlLabel, Switch, makeStyles } from '@material-
 import { DataSizeSelector, ChipSelector } from '.'
 import { useAlgorithms } from '../hooks'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
 	container: {
 		justifyContent: 'space-between'
 	},
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 	themeSelector: {
 		marginLeft: 'auto'
 	}
-}))
+})
 
 const Navbar = ({
 	handleToggleThemeMode,
