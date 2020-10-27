@@ -1,11 +1,14 @@
 import { AppBar,Toolbar, FormControlLabel, Switch } from '@material-ui/core'
-import DataSizeSelector from './DataSizeSelector'
+import { DataSizeSelector, ChipSelector } from '.'
+import { useAlgorithms } from '../hooks'
 
 const Navbar = ({
 	handleToggleThemeMode,
 	handleGenerateData,
 	initialDataSize
 }) => {
+	const [algorithm, setAlgorithm, algorithms] = useAlgorithms()
+
 	return (
 		<AppBar position="static">
 			<Toolbar>
@@ -17,6 +20,12 @@ const Navbar = ({
 				<DataSizeSelector
 					handleGenerateData={handleGenerateData}
 					initialDataSize={initialDataSize}
+				/>
+
+				<ChipSelector
+					handleClick={setAlgorithm}
+					selected={algorithm}
+					data={algorithms}
 				/>
 
 			</Toolbar>
