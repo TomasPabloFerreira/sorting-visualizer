@@ -5,7 +5,8 @@ const generateData = (n) => {
 	const newData = newArray.map(x => {
 		return {
 			id: x,
-			value: Math.floor(Math.random() * 100) + 1 ,
+			value: Math.floor(Math.random() * 100) + 1,
+			color: 0
 		}
 	})
 
@@ -20,7 +21,7 @@ const useData = (n) => {
 		setData(newData)
 	}
 
-	return [data, setGeneratedData]
+	return [data, setGeneratedData, setData]
 }
 
 export default useData

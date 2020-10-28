@@ -25,7 +25,7 @@ const Visualizer = ({ data }) => {
 		<Container className={styles.container}>
 			<Paper elevation={3} className={styles.paper}>
 				{ data.map(x =>
-					<DataCol key={x.id} value={x.value} />
+					<DataCol key={x.id} value={x.value} color={x.color} />
 				)}
 			</Paper>
 		</Container>

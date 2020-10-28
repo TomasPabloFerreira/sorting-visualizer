@@ -1,6 +1,5 @@
 import { AppBar,Toolbar, FormControlLabel, Switch, makeStyles } from '@material-ui/core'
 import { DataSizeSelector, ChipSelector } from '.'
-import { useAlgorithms } from '../hooks'
 
 const useStyles = makeStyles({
 	container: {
@@ -24,9 +23,11 @@ const useStyles = makeStyles({
 const Navbar = ({
 	handleToggleThemeMode,
 	handleGenerateData,
-	initialDataSize
+	initialDataSize,
+	algorithm,
+	setAlgorithm,
+	algorithms
 }) => {
-	const [algorithm, setAlgorithm, algorithms] = useAlgorithms()
 	const styles = useStyles()
 
 	return (
