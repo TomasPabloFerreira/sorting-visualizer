@@ -10,7 +10,7 @@ const delay = () => {
 	return new Promise(r => setTimeout(r, 3))
 }
 
-const selectionSort = async (data, setItems) => {
+const selectionSort = async (data, setData) => {
 	const items = [...data]
 
 	let length = items.length;
@@ -28,7 +28,7 @@ const selectionSort = async (data, setItems) => {
 			items[j].color = 1
 			if(j-1 !== min) items[j-1].color = 0
 
-			setItems([...items])
+			setData([...items])
 			await delay()
 		}
 
@@ -36,13 +36,41 @@ const selectionSort = async (data, setItems) => {
 		items[min].color = 2
 		swap(items, i, min)
 
-		setItems([...items])
+		setData([...items])
 		await delay()
 	}
 }
 
-const bubbleSort = () => {
+const bubbleSort = async (data, setData) => {
+	const items = [...data]
+	let length = items.length
 
+	let sorted = false
+	while(!sorted) {
+		sorted = true
+		for(let i = 0; i < length - 1; i++) {
+
+			items[i].color = 1
+			items[i+1].color = 1
+			setData([...items])
+			await delay()
+
+			if (items[i].value > items[i + 1].value) {
+				sorted = false;
+				swap(items, i, i + 1);
+				setData([...items])
+				await delay()
+			}
+
+			items[i].color = 0
+			items[i+1].color = 0
+		}
+		items[length - 1].color = 2
+		length--;
+	}
+
+	const sortedArray = items.map(x => ({ ...x, color: 2 }))
+	setData(sortedArray)
 }
 
 const insertionSort = () => {
@@ -51,7 +79,7 @@ const insertionSort = () => {
 
 const algorithms = [
 	{ key: 1, name: 'Selection', run: selectionSort },
-	{ key: 2, name: 'Bubble' },
+	{ key: 2, name: 'Bubble', run: bubbleSort },
 	{ key: 3, name: 'Insertion' }
 ]
 
