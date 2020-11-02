@@ -7,7 +7,7 @@ const swap = (data, i, z) => {
 }
 
 const delay = () => {
-	return new Promise(r => setTimeout(r, 3))
+	return new Promise(r => setTimeout(r, 200))
 }
 
 const selectionSort = async (data, setData) => {
@@ -73,14 +73,38 @@ const bubbleSort = async (data, setData) => {
 	setData(sortedArray)
 }
 
-const insertionSort = () => {
+const insertionSort = async (data, setData) => {
+	const items = [...data]
+	let length = items.length
 
+	for(let i = 1; i < length; i++) {
+		let j = i - 1
+		let current = items[i]
+
+		while(j >= 0 && items[j].value > current.value) {
+
+			items[j].color = 1
+			items[j + 1].color = 1
+			setData([...items])
+			await delay()
+
+			swap(items, j, j + 1)
+			setData([...items])
+			await delay()
+
+			items[j].color = 2
+			items[j + 1].color = 2
+
+			j--
+		}
+	}
+	setData([...items])
 }
 
 const algorithms = [
 	{ key: 1, name: 'Selection', run: selectionSort },
 	{ key: 2, name: 'Bubble', run: bubbleSort },
-	{ key: 3, name: 'Insertion' }
+	{ key: 3, name: 'Insertion', run: insertionSort }
 ]
 
 const useAlgorithms = () => {
