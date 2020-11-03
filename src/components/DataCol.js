@@ -12,10 +12,10 @@ const useStyles = makeStyles({
 const DataCol = ({ value, color }) => {
 
 	const background = !color 
-		? 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+		? 'linear-gradient(340deg, #FE6B8B 30%, #FF8E53 90%)'
 		: color === 1
 			? 'red'
-			: 'linear-gradient(45deg, #FE1B8B 30%, #2F8EF3 90%)'
+			: 'linear-gradient(340deg, #FE1B8B 30%, #2F8EF3 90%)'
 
 	const styles = useStyles()
 	const style = {
