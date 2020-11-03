@@ -7,7 +7,7 @@ const swap = (data, i, z) => {
 }
 
 const delay = () => {
-	return new Promise(r => setTimeout(r, 200))
+	return new Promise(r => setTimeout(r, 3))
 }
 
 const selectionSort = async (data, setData) => {
@@ -101,10 +101,70 @@ const insertionSort = async (data, setData) => {
 	setData([...items])
 }
 
+const mergeSort = async (data, setData) => {
+	let result = [...data]
+	let len = result.length;
+	
+	for (let size = 1; size < len; size *= 2)
+	{
+		for (let leftStart = 0; leftStart < len; leftStart += 2 * size)
+		{ 
+			let backup = [...result]
+
+			let left = leftStart;
+			let right = Math.min(left + size, len);
+			let leftLimit = right;
+			let rightLimit = Math.min(right + size, len);
+
+			// colors
+			result = result.map((x, i) => {
+				if(i >= left && i <= rightLimit) {
+					return { ...x, color: 1 }
+				}
+				return x
+			})
+			setData([...result])
+			await delay()
+
+			let i = left;
+
+			while (left < leftLimit && right < rightLimit) {
+				result[i++].value = (backup[left].value <= backup[right].value)
+					? backup[left++].value
+					: backup[right++].value
+				setData([...result])
+				await delay()
+			}
+
+			while (left < leftLimit) {
+				result[i++].value = backup[left++].value
+				setData([...result])
+				await delay()
+			}
+
+			while (right < rightLimit) {
+				result[i++].value = backup[right++].value
+				setData([...result])
+				await delay()
+			}
+
+			// colors
+			result = result.map(x => ({ ...x, color: 0 }))
+			setData([...result])
+			await delay()
+		}
+	}
+
+	// colors
+	result = result.map(x => ({ ...x, color: 2 }))
+	setData(result)
+}
+
 const algorithms = [
 	{ key: 1, name: 'Selection', run: selectionSort },
 	{ key: 2, name: 'Bubble', run: bubbleSort },
-	{ key: 3, name: 'Insertion', run: insertionSort }
+	{ key: 3, name: 'Insertion', run: insertionSort },
+	{ key: 4, name: 'Merge', run: mergeSort }
 ]
 
 const useAlgorithms = () => {
