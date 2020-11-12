@@ -6,19 +6,25 @@ const swap = (data, i, z) => {
 	data[i] = tmp
 }
 
+const resetColors = (data, setData) => {
+	const newData = data.map(x => ({ ...x, color: 0 }))
+	setData(newData)
+}
+
 const delay = () => {
 	return new Promise(r => setTimeout(r, 3))
 }
 
-const selectionSort = async (data, setData) => {
+const selectionSort = async (data, setData, sortingRef, stopSorting) => {
 	const items = [...data]
-
 	let length = items.length;
+
 	for (let i = 0; i < length ; i++) {
 
 		let min = i;
 
 		for (let j = i + 1; j < length; j++) {
+			if(!sortingRef.current) return resetColors(items, setData);
 
 			if (items[j].value <= items[min].value) {
 				items[min].color = 0
@@ -39,9 +45,10 @@ const selectionSort = async (data, setData) => {
 		setData([...items])
 		await delay()
 	}
+	stopSorting()
 }
 
-const bubbleSort = async (data, setData) => {
+const bubbleSort = async (data, setData, sortingRef, stopSorting) => {
 	const items = [...data]
 	let length = items.length
 
@@ -49,6 +56,8 @@ const bubbleSort = async (data, setData) => {
 	while(!sorted) {
 		sorted = true
 		for(let i = 0; i < length - 1; i++) {
+
+			if(!sortingRef.current) return resetColors(items, setData);
 
 			items[i].color = 1
 			items[i+1].color = 1
@@ -71,9 +80,10 @@ const bubbleSort = async (data, setData) => {
 
 	const sortedArray = items.map(x => ({ ...x, color: 2 }))
 	setData(sortedArray)
+	stopSorting()
 }
 
-const insertionSort = async (data, setData) => {
+const insertionSort = async (data, setData, sortingRef, stopSorting) => {
 	const items = [...data]
 	let length = items.length
 
@@ -82,6 +92,8 @@ const insertionSort = async (data, setData) => {
 		let current = items[i]
 
 		while(j >= 0 && items[j].value > current.value) {
+
+			if(!sortingRef.current) return resetColors(items, setData);
 
 			items[j].color = 1
 			items[j + 1].color = 1
@@ -99,9 +111,10 @@ const insertionSort = async (data, setData) => {
 		}
 	}
 	setData([...items])
+	stopSorting()
 }
 
-const mergeSort = async (data, setData) => {
+const mergeSort = async (data, setData, sortingRef, stopSorting) => {
 	let result = [...data]
 	let len = result.length;
 	
@@ -109,6 +122,8 @@ const mergeSort = async (data, setData) => {
 	{
 		for (let leftStart = 0; leftStart < len; leftStart += 2 * size)
 		{ 
+			if(!sortingRef) return resetColors(result, setData);
+
 			let backup = [...result]
 
 			let left = leftStart;
@@ -158,6 +173,7 @@ const mergeSort = async (data, setData) => {
 	// colors
 	result = result.map(x => ({ ...x, color: 2 }))
 	setData(result)
+	stopSorting()
 }
 
 const algorithms = [
