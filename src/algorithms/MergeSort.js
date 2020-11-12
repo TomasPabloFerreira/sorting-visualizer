@@ -8,7 +8,7 @@ const mergeSort = async (data, setData, sortingRef, stopSorting) => {
 	{
 		for (let leftStart = 0; leftStart < len; leftStart += 2 * size)
 		{ 
-			if(!sortingRef) return resetColors(result, setData);
+			if(!sortingRef.current) return resetColors(result, setData);
 
 			let backup = [...result]
 
